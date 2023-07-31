@@ -49,7 +49,7 @@ textarea {
   box-shadow: inset 0 1px 3px #ddd;
   border-radius: 4px;
   vertical-align: middle;
-  background-color: var(--cl-light);
+  background-color: var(--cl-bg);
   &:focus {
     outline: 4px auto -webkit-focus-ring-color;
   }
