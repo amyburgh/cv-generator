@@ -1,0 +1,57 @@
+.App {
+  background-color: var(--cl-bg);
+  color: var(--cl-dark);
+  min-height: 100vh;
+  min-width: 320px;
+  display: grid;
+  grid-template-columns: max(600px) auto;
+}
+
+.input {
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.output {
+}
+
+/* || Title */
+
+.Title {
+  background-color: var(--cl-light);
+  border-radius: 20px;
+  min-height: 45px;
+  padding: 1.5rem 2rem;
+
+  display: flex;
+  justify-content: space-between;
+
+  & input {
+    font-size: 2rem;
+    color: var(--cl-dark);
+    font-weight: bold;
+    width: 90%;
+    padding: 0;
+    border: 1px solid transparent;
+    box-shadow: none;
+  }
+  /* & input:focus {
+    border: 1px solid var(--cl-go);
+  } */
+}
+
+.label {
+  position: relative;
+}
+.edit {
+  position: absolute;
+  transform: translateX(-1rem);
+}
+
+.download {
+  background-color: var(--cl-dark);
+  display: flex;
+  gap: 0.5rem;
+}
