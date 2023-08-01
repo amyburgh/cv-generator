@@ -1,15 +1,15 @@
 import { useState } from 'react'
 
-export default function Experience({ update }) {
+export default function Experience({ date, id, update }) {
   const [experience, setExperience] = useState({
-    role: undefined,
-    employer: undefined,
-    city: undefined,
-    country: undefined,
-    start: undefined,
-    end: undefined,
+    id: id,
+    role: '',
+    employer: '',
+    city: '',
+    country: '',
+    start: '',
+    end: '',
   })
-  const date = /\d{4}-\d{2}/.exec(new Date().toISOString())
 
   const handleInput = (prop) => {
     setExperience({ ...experience, ...prop })
@@ -118,7 +118,7 @@ export default function Experience({ update }) {
           />
         </div>
 
-        <button className='next' onClick={() => update(experience)}>
+        <button className='save' onClick={() => update(experience)}>
           Save
         </button>
       </form>

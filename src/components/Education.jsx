@@ -1,13 +1,19 @@
-export default function Education({
-  field,
-  school,
-  city,
-  country,
-  start,
-  end,
-  description,
-  update,
-}) {
+import { useState } from 'react'
+
+export default function Education({ id, date, update }) {
+  const [edu, setEdu] = useState({
+    id: id,
+    field: '',
+    school: '',
+    city: '',
+    country: '',
+    start: '',
+    end: '',
+    description: '',
+  })
+
+  // console.log(edu)
+
   return (
     <div className='Education user'>
       <h2>Education</h2>
@@ -21,8 +27,8 @@ export default function Education({
             type='text'
             id='field'
             placeholder='Enter Degree/ Field of Study'
-            value={field}
-            // onChange={(e) => update('education', { degree: e.target.value })}
+            value={edu.field}
+            onChange={(e) => setEdu({ ...edu, field: e.target.value })}
           />
         </div>
 
@@ -34,8 +40,8 @@ export default function Education({
             type='text'
             id='school'
             placeholder='Enter School/ University'
-            value={school}
-            // onChange={(e) => update('education', { school: e.target.value })}
+            value={edu.school}
+            onChange={(e) => setEdu({ ...edu, school: e.target.value })}
           />
         </div>
 
@@ -48,8 +54,8 @@ export default function Education({
               type='text'
               id='city'
               placeholder='Enter City'
-              value={city}
-              // onChange={(e) => update('education', { city: e.target.value })}
+              value={edu.city}
+              onChange={(e) => setEdu({ ...edu, city: e.target.value })}
             />
           </div>
 
@@ -61,8 +67,8 @@ export default function Education({
               type='text'
               id='country'
               placeholder='Enter Country'
-              value={country}
-              // onChange={(e) => update('education', { country: e.target.value })}
+              value={edu.country}
+              onChange={(e) => setEdu({ ...edu, country: e.target.value })}
             />
           </div>
         </div>
@@ -73,11 +79,12 @@ export default function Education({
               Start Date<span>optional</span>
             </label>
             <input
-              type='date'
+              type='month'
               id='start'
+              max={date}
               placeholder='Month'
-              value={start}
-              // onChange={(e) => update('education', { city: e.target.value })}
+              value={edu.start}
+              onChange={(e) => setEdu({ ...edu, start: e.target.value })}
             />
           </div>
 
@@ -86,11 +93,12 @@ export default function Education({
               End Date<span>optional</span>
             </label>
             <input
-              type='date'
+              type='month'
               id='country'
-              value={country}
+              max={date}
+              value={edu.country}
               placeholder='Month'
-              // onChange={(e) => update('education', { country: e.target.value })}
+              onChange={(e) => setEdu({ ...edu, end: e.target.value })}
               required
             />
           </div>
@@ -102,13 +110,15 @@ export default function Education({
           </label>
           <textarea
             id='description'
-            value={description}
+            value={edu.description}
             placeholder='Add a description of your education... '
-            // onChange={(e) => update('bio', { address: e.target.value })}
+            onChange={(e) => setEdu({ ...edu, description: e.target.value })}
           />
         </div>
 
-        <button className='next'>Next</button>
+        <button className='save' onClick={() => update({ education: edu })}>
+          Save
+        </button>
       </form>
     </div>
   )

@@ -81,6 +81,13 @@ form {
     margin-left: 0.5rem;
     margin-bottom: 0.5rem;
   }
+
+  & span {
+    font-size: small;
+    font-weight: 700;
+    color: var(--cl-mild);
+    margin: 0.5rem;
+  }
 }
 form:invalid button {
   opacity: 0.8;
@@ -92,3 +99,5 @@ form:invalid button {
   width: fit-content;
   align-self: flex-end;
 }
+
+/* || Skill */
