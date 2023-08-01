@@ -87,7 +87,7 @@ form:invalid button {
   /* pointer-events: none; */
 }
 
-.next {
+.save {
   background-color: var(--cl-go);
   width: fit-content;
   align-self: flex-end;

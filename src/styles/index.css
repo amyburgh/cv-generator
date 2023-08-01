@@ -43,6 +43,7 @@ code {
 input,
 select,
 textarea {
+  font-size: 1rem;
   padding: 0.5em 0.6em;
   display: inline-block;
   border: 1px solid #ccc;
