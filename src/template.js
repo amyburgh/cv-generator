@@ -4,8 +4,8 @@ const template = {
   education: [],
   experience: [],
   links: [],
-  projects: [],
-  skills: [],
+  project: [],
+  skill: [],
 }
 
 export { template }

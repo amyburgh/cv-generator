@@ -4,7 +4,7 @@ export default function Skill({ id, update }) {
   const [skill, setSkill] = useState({
     id: id,
     name: '',
-    info: '',
+    desc: '',
     level: '',
   })
 
@@ -23,19 +23,20 @@ export default function Skill({ id, update }) {
             placeholder='Enter Skill'
             value={skill.name}
             onChange={(e) => setSkill({ ...skill, name: e.target.value })}
+            required
           />
         </div>
 
         <div>
-          <label htmlFor='info'>
+          <label htmlFor='desc'>
             Information<span>recommended</span>
           </label>
           <input
             type='text'
-            id='info'
+            id='desc'
             placeholder='Enter information or sub-skills'
-            value={skill.info}
-            onChange={(e) => setSkill({ ...skill, info: e.target.value })}
+            value={skill.desc}
+            onChange={(e) => setSkill({ ...skill, desc: e.target.value })}
           />
         </div>
 
@@ -44,20 +45,17 @@ export default function Skill({ id, update }) {
             Select skill level<span>optional</span>
           </label>
           <select
-            // type='text'
-            id='info'
-            placeholder='Enter information or sub-skills'
-            value={skill.info}
+            id='level'
             onChange={(e) => setSkill({ ...skill, level: e.target.value })}
           >
-            <option value='' disabled selected hidden>
+            <option value='' disabled hidden>
               Skill level
             </option>
-            <option value='novice'>Novice</option>
-            <option value='beginner'>Beginner</option>
-            <option value='competent'>Competent</option>
-            <option value='proficient'>Proficient</option>
-            <option value='expert'>Expert</option>
+            <option value='0'>Novice</option>
+            <option value='1'>Beginner</option>
+            <option value='2'>Competent</option>
+            <option value='3'>Proficient</option>
+            <option value='4'>Expert</option>
           </select>
         </div>
 

@@ -3,7 +3,7 @@ import { useState } from 'react'
 export default function Project({ id, date, update }) {
   const [project, setProject] = useState({
     id: id,
-    title: '',
+    name: '',
     sub: '',
     start: '',
     end: '',
@@ -12,20 +12,20 @@ export default function Project({ id, date, update }) {
 
   return (
     <div className='Project user'>
-      <h2>Create Project</h2>
+      <h2>Project</h2>
       <hr />
       <form onSubmit={(e) => e.preventDefault()}>
         <div>
-          <label htmlFor='title'>
+          <label htmlFor='name'>
             Project title<span className='required'>*</span>
           </label>
           <input
             type='text'
-            id='title'
+            id='name'
             placeholder='Enter Project title'
-            value={project.title}
+            value={project.name}
             required
-            onChange={(e) => setProject({ ...project, title: e.target.value })}
+            onChange={(e) => setProject({ ...project, name: e.target.value })}
           />
         </div>
 
@@ -70,22 +70,19 @@ export default function Project({ id, date, update }) {
               value={project.end}
               placeholder='Month'
               onChange={(e) => setProject({ ...project, end: e.target.value })}
-              required
             />
           </div>
         </div>
 
         <div>
-          <label htmlFor='description'>
+          <label htmlFor='desc'>
             Description<span>optional</span>
           </label>
           <textarea
-            id='description'
+            id='desc'
             value={project.description}
             placeholder='Add a description of your project... '
-            onChange={(e) =>
-              setProject({ ...project, description: e.target.value })
-            }
+            onChange={(e) => setProject({ ...project, desc: e.target.value })}
           />
         </div>
 

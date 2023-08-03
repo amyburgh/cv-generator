@@ -1,0 +1,117 @@
+.cv {
+  width: 210mm;
+  height: 297mm;
+  background-color: white;
+  margin-top: 2rem;
+
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  /* flex-grow: 1; */
+  padding: 15.4708mm 16mm 12.825mm;
+  color: black;
+}
+
+.cv.Heading {
+  font-weight: bold;
+  letter-spacing: 0.5px;
+  font-size: 12pt;
+  line-height: 21px;
+}
+
+.cv-bio {
+  margin: 0;
+  padding: 0;
+  padding-bottom: 0.8em;
+  width: 100%;
+  height: fit-content;
+  line-height: 19px;
+  font-size: 11pt;
+  white-space: pre-wrap;
+}
+
+.heading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-bottom: 0.5em;
+}
+
+.links {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.link {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.name {
+  font-weight: 700;
+  font-size: 19.5pt;
+  letter-spacing: inherit;
+  line-height: 30px;
+  padding-bottom: 0.2em;
+}
+
+.job {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 15.3075pt;
+  line-height: 23px;
+  padding-bottom: 0.16em;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  display: block;
+  /* margin-left: 106.5px; */
+  /* margin-right: 0px; */
+}
+
+.section-heading {
+  font-weight: bold;
+  font-size: 12pt;
+  letter-spacing: 0.5px;
+  line-height: 21px;
+  border-bottom: 2px solid rgb(0, 0, 0);
+  margin-bottom: 0.6032em;
+}
+
+.cv-item {
+  display: grid;
+  grid-template-columns: 78fr 22fr;
+  font-size: 11pt;
+  line-height: 19px;
+
+  .left,
+  .right {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .right {
+    align-items: flex-end;
+  }
+
+  .title {
+    font-weight: bold;
+  }
+  .place {
+    font-weight: 400;
+    font-style: italic;
+  }
+
+  & p {
+    margin: 0;
+  }
+  .skills {
+    display: flex;
+    gap: 5.5pt;
+  }
+}

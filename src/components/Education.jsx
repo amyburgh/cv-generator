@@ -3,13 +3,13 @@ import { useState } from 'react'
 export default function Education({ id, date, update }) {
   const [edu, setEdu] = useState({
     id: id,
-    field: '',
-    school: '',
+    name: '',
+    sub: '',
     city: '',
     country: '',
     start: '',
     end: '',
-    description: '',
+    desc: '',
   })
 
   // console.log(edu)
@@ -20,28 +20,29 @@ export default function Education({ id, date, update }) {
       <hr />
       <form onSubmit={(e) => e.preventDefault()}>
         <div>
-          <label htmlFor='field'>
+          <label htmlFor='name'>
             Field<span>optional</span>
           </label>
           <input
             type='text'
-            id='field'
+            id='name'
             placeholder='Enter Degree/ Field of Study'
-            value={edu.field}
-            onChange={(e) => setEdu({ ...edu, field: e.target.value })}
+            value={edu.name}
+            onChange={(e) => setEdu({ ...edu, name: e.target.value })}
+            required
           />
         </div>
 
         <div>
-          <label htmlFor='school'>
+          <label htmlFor='sub'>
             School<span>optional</span>
           </label>
           <input
             type='text'
-            id='school'
+            id='sub'
             placeholder='Enter School/ University'
-            value={edu.school}
-            onChange={(e) => setEdu({ ...edu, school: e.target.value })}
+            value={edu.sub}
+            onChange={(e) => setEdu({ ...edu, sub: e.target.value })}
           />
         </div>
 
@@ -94,25 +95,24 @@ export default function Education({ id, date, update }) {
             </label>
             <input
               type='month'
-              id='country'
+              id='end'
               max={date}
-              value={edu.country}
+              value={edu.end}
               placeholder='Month'
               onChange={(e) => setEdu({ ...edu, end: e.target.value })}
-              required
             />
           </div>
         </div>
 
         <div>
-          <label htmlFor='description'>
+          <label htmlFor='desc'>
             Description<span>optional</span>
           </label>
           <textarea
-            id='description'
-            value={edu.description}
+            id='desc'
+            value={edu.desc}
             placeholder='Add a description of your education... '
-            onChange={(e) => setEdu({ ...edu, description: e.target.value })}
+            onChange={(e) => setEdu({ ...edu, desc: e.target.value })}
           />
         </div>
 
