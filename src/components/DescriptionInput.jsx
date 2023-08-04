@@ -7,7 +7,7 @@ export default function DescriptionInput({ desc, handleChange }) {
       <textarea
         type='text'
         id='description'
-        placeholder='Describe your role & achievements...'
+        placeholder='Describe...'
         value={desc}
         onChange={(e) => handleChange({ desc: e.target.value })}
       />

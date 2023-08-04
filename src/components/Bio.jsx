@@ -1,87 +1,69 @@
 import { useState } from 'react'
+import ButtonInput from './ButtonInput'
+import CustomInput from './CustomInput'
 
-export default function Bio({ update }) {
-  const [bio, setBio] = useState({
+export default function Bio({ id, update, del }) {
+  const def = {
+    id: id,
     name: '',
     job: '',
+    link: '',
     email: '',
     phone: '',
     address: '',
-  })
-
-  const handleInput = (prop) => {
+  }
+  const [bio, setBio] = useState(def)
+  const handleChange = (prop) => {
     setBio({ ...bio, ...prop })
   }
 
   return (
-    <div className='Bio user'>
-      <h2>Personal Details</h2>
-      <form onSubmit={(e) => e.preventDefault()}>
-        <div>
-          <label htmlFor='name'>Full Name</label>
-          <input
-            type='text'
-            id='name'
-            placeholder='Enter title, first and last name'
-            value={bio.name}
-            onChange={(e) => handleInput({ name: e.target.value })}
-            required
-          />
-        </div>
-
-        <div>
-          <label htmlFor='job'>Job Title</label>
-          <input
-            type='text'
-            id='job'
-            placeholder='Enter Job title'
-            value={bio.job}
-            onChange={(e) => handleInput({ job: e.target.value })}
-            required
-          />
-        </div>
-
-        <div className='row'>
-          <div>
-            <label htmlFor='email'>Email</label>
-            <input
-              type='email'
-              id='email'
-              placeholder='Enter email'
-              value={bio.email}
-              onChange={(e) => handleInput({ email: e.target.value })}
-              required
-            />
-          </div>
-
-          <div>
-            <label htmlFor='phone'>Phone</label>
-            <input
-              type='tel'
-              id='phone'
-              placeholder='Enter phone #'
-              value={bio.phone}
-              onChange={(e) => handleInput({ phone: e.target.value })}
-              required
-            />
-          </div>
-        </div>
-        <div>
-          <label htmlFor='address'>Address</label>
-          <input
-            type='text'
-            id='address'
-            placeholder='City, State, Country'
-            value={bio.address}
-            onChange={(e) => handleInput({ address: e.target.value })}
-            required
-          />
-        </div>
-
-        <button className='save' onClick={() => update({ bio: bio })}>
-          Save
-        </button>
-      </form>
-    </div>
+    <>
+      <CustomInput
+        type='text'
+        set='name'
+        value={bio.name}
+        text='Full Name'
+        req={true}
+        handleChange={handleChange}
+      />
+      <CustomInput
+        type='text'
+        set='job'
+        value={bio.job}
+        text='Job Title'
+        handleChange={handleChange}
+      />
+      <CustomInput
+        type='url'
+        set='link'
+        value={bio.link}
+        text='Website link'
+        handleChange={handleChange}
+      />
+      <div className='row'>
+        <CustomInput
+          type='email'
+          set='email'
+          value={bio.email}
+          text='email'
+          handleChange={handleChange}
+        />
+        <CustomInput
+          type='tel'
+          set='phone'
+          value={bio.phone}
+          text='phone'
+          handleChange={handleChange}
+        />
+      </div>
+      <CustomInput
+        set='address'
+        value={bio.address}
+        text='City, State, Country'
+        handleChange={handleChange}
+      />
+      <ButtonInput save={() => update(bio)} del={() => del(bio)} />
+    </>
   )
 }

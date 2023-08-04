@@ -1,4 +1,5 @@
-export default function DateInput({ start, end, date, handleChange }) {
+export default function DateInput({ start, end, handleChange }) {
+  const dateToday = /\d{4}-\d{2}/.exec(new Date().toISOString())
   return (
     <div className='row'>
       <div>
@@ -7,7 +8,7 @@ export default function DateInput({ start, end, date, handleChange }) {
         </label>
         <input
           type='month'
-          max={date}
+          max={dateToday}
           id='start date'
           placeholder='Start Date'
           value={start}
@@ -20,7 +21,7 @@ export default function DateInput({ start, end, date, handleChange }) {
         </label>
         <input
           type='month'
-          max={date}
+          max={dateToday}
           id='end'
           placeholder='End Date'
           value={end}

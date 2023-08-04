@@ -1,13 +1,11 @@
 import { useState } from 'react'
+import CustomInput from './CustomInput'
 import DateInput from './DateInput'
-import LocationInput from './LocationInput'
-import PrimaryInput from './PrimaryInput'
-import SecondaryInput from './SecondaryInput'
 import DescriptionInput from './DescriptionInput'
 import ButtonInput from './ButtonInput'
 
-export default function Experience({ date, id, update, del }) {
-  const init = {
+export default function Experience({ init, id, update, del }) {
+  const def = {
     id: id,
     name: '',
     sub: '',
@@ -16,48 +14,41 @@ export default function Experience({ date, id, update, del }) {
     start: '',
     end: '',
   }
-
-  const [exp, setExp] = useState(init)
-
-  const handleChange = (prop) => setExp((prev) => ({ ...prev, ...prop }))
-
-  const handleDel = () => {
-    setExp(init)
-    del({ experience: exp })
-  }
+  const [exp, setExp] = useState(init ? init : def)
+  const handleChange = (prop) => setExp({ ...exp, ...prop })
 
   return (
-    <div className='Experience user'>
-      <div className='input-heading'>
-        <h2>Experience</h2>
-        <span className='page'>{'1 of 1'}</span>
+    <>
+      <CustomInput
+        set='name'
+        value={exp.name}
+        text={'Job Title'}
+        req={true}
+        handleChange={handleChange}
+      />
+      <CustomInput
+        set='sub'
+        value={exp.sub}
+        text={'Employer'}
+        handleChange={handleChange}
+      />
+      <div className='row'>
+        <CustomInput
+          set='city'
+          value={exp.city}
+          text={'City'}
+          handleChange={handleChange}
+        />
+        <CustomInput
+          set='country'
+          value={exp.country}
+          text={'Country'}
+          handleChange={handleChange}
+        />
       </div>
-      <form onSubmit={(e) => e.preventDefault()}>
-        <PrimaryInput
-          name={exp.name}
-          text='Job Title'
-          handleChange={handleChange}
-        />
-        <SecondaryInput
-          name={exp.sub}
-          text='Employer'
-          handleChange={handleChange}
-        />
-
-        <LocationInput
-          city={exp.city}
-          country={exp.country}
-          handleChange={handleChange}
-        />
-        <DateInput
-          start={exp.start}
-          end={exp.end}
-          date={date}
-          handleChange={handleChange}
-        />
-        <DescriptionInput desc={exp.desc} handleChange={handleChange} />
-        <ButtonInput save={() => update({ experience: exp })} del={handleDel} />
-      </form>
-    </div>
+      <DateInput start={exp.start} end={exp.end} handleChange={handleChange} />
+      <DescriptionInput desc={exp.desc} handleChange={handleChange} />
+      <ButtonInput save={() => update(exp)} del={() => del(exp)} />
+    </>
   )
 }

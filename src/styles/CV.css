@@ -115,3 +115,9 @@ a {
     gap: 5.5pt;
   }
 }
+
+.section-item {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}

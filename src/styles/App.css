@@ -114,6 +114,7 @@ form:invalid button {
 }
 
 .page {
+  width: max-content;
   font-size: small;
   font-weight: 700;
   color: var(--cl-mild);
@@ -130,3 +131,6 @@ form:invalid button {
   justify-content: center;
 }
 /* || Skill */
+h2 {
+  text-transform: capitalize;
+}

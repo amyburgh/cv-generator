@@ -1,7 +1,11 @@
 import { useState } from 'react'
+import CustomInput from './CustomInput'
+import DateInput from './DateInput'
+import DescriptionInput from './DescriptionInput'
+import ButtonInput from './ButtonInput'
 
-export default function Education({ id, date, update }) {
-  const [edu, setEdu] = useState({
+export default function Education({ init, id, update, del }) {
+  const def = {
     id: id,
     name: '',
     sub: '',
@@ -10,116 +14,41 @@ export default function Education({ id, date, update }) {
     start: '',
     end: '',
     desc: '',
-  })
-
-  // console.log(edu)
+  }
+  const [edu, setEdu] = useState(init ? init : def)
+  const handleChange = (prop) => setEdu({ ...edu, ...prop })
 
   return (
-    <div className='Education user'>
-      <h2>Education</h2>
-      <hr />
-      <form onSubmit={(e) => e.preventDefault()}>
-        <div>
-          <label htmlFor='name'>
-            Field<span>optional</span>
-          </label>
-          <input
-            type='text'
-            id='name'
-            placeholder='Enter Degree/ Field of Study'
-            value={edu.name}
-            onChange={(e) => setEdu({ ...edu, name: e.target.value })}
-            required
-          />
-        </div>
-
-        <div>
-          <label htmlFor='sub'>
-            School<span>optional</span>
-          </label>
-          <input
-            type='text'
-            id='sub'
-            placeholder='Enter School/ University'
-            value={edu.sub}
-            onChange={(e) => setEdu({ ...edu, sub: e.target.value })}
-          />
-        </div>
-
-        <div className='row'>
-          <div>
-            <label htmlFor='city'>
-              City<span>optional</span>
-            </label>
-            <input
-              type='text'
-              id='city'
-              placeholder='Enter City'
-              value={edu.city}
-              onChange={(e) => setEdu({ ...edu, city: e.target.value })}
-            />
-          </div>
-
-          <div>
-            <label htmlFor='country'>
-              Country<span>optional</span>
-            </label>
-            <input
-              type='text'
-              id='country'
-              placeholder='Enter Country'
-              value={edu.country}
-              onChange={(e) => setEdu({ ...edu, country: e.target.value })}
-            />
-          </div>
-        </div>
-
-        <div className='row'>
-          <div>
-            <label htmlFor='start'>
-              Start Date<span>optional</span>
-            </label>
-            <input
-              type='month'
-              id='start'
-              max={date}
-              placeholder='Month'
-              value={edu.start}
-              onChange={(e) => setEdu({ ...edu, start: e.target.value })}
-            />
-          </div>
-
-          <div>
-            <label htmlFor='end'>
-              End Date<span>optional</span>
-            </label>
-            <input
-              type='month'
-              id='end'
-              max={date}
-              value={edu.end}
-              placeholder='Month'
-              onChange={(e) => setEdu({ ...edu, end: e.target.value })}
-            />
-          </div>
-        </div>
-
-        <div>
-          <label htmlFor='desc'>
-            Description<span>optional</span>
-          </label>
-          <textarea
-            id='desc'
-            value={edu.desc}
-            placeholder='Add a description of your education... '
-            onChange={(e) => setEdu({ ...edu, desc: e.target.value })}
-          />
-        </div>
-
-        <button className='save' onClick={() => update({ education: edu })}>
-          Save
-        </button>
-      </form>
-    </div>
+    <>
+      <CustomInput
+        set='name'
+        value={edu.name}
+        text='Degree/ Field of Study'
+        handleChange={handleChange}
+      />
+      <CustomInput
+        set='sub'
+        value={edu.sub}
+        text='School/ University'
+        handleChange={handleChange}
+      />
+      <div className='row'>
+        <CustomInput
+          set='city'
+          value={edu.city}
+          text={'City'}
+          handleChange={handleChange}
+        />
+        <CustomInput
+          set='country'
+          value={edu.country}
+          text={'Country'}
+          handleChange={handleChange}
+        />
+      </div>
+      <DateInput start={edu.start} end={edu.end} handleChange={handleChange} />
+      <DescriptionInput desc={edu.desc} handleChange={handleChange} />
+      <ButtonInput save={() => update(edu)} del={() => del(edu)} />
+    </>
   )
 }
