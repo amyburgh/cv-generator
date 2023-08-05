@@ -2,12 +2,7 @@ import '../styles/CV.css'
 import { FiMail, FiMapPin, FiPhone } from 'react-icons/fi'
 import { BsCircleFill, BsCircle } from 'react-icons/bs'
 
-// function Heading({ text }) {
-//   return <div className='section-heading'>{text}</div>
-// }
-
 function Bio({ name, job, email, phone, address }) {
-  // console.log(name)
   return (
     <div className='cv-bio'>
       <div className='heading'>
@@ -27,7 +22,6 @@ function Bio({ name, job, email, phone, address }) {
           <FiMapPin />
           <span>{address}</span>
         </div>
-
         {/* links */}
       </div>
     </div>

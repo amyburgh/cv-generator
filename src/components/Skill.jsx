@@ -1,7 +1,7 @@
 import { useState } from 'react'
-import ButtonInput from './ButtonInput'
-import LevelInput from './LevelInput'
 import CustomInput from './CustomInput'
+import LevelInput from './LevelInput'
+import ButtonInput from './ButtonInput'
 
 export default function Education({ init, id, update, del }) {
   const def = {
